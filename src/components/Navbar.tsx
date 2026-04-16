@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { label: "Sobre mí", href: "#about" },
@@ -71,23 +72,62 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-[#FAFAF8] border-t border-[#E8E4DC] px-6 pb-8 pt-6">
-          <ul className="flex flex-col gap-6">
-            {[...links, { label: "Contacto", href: "#contact" }].map((l) => (
-              <li key={l.href}>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden bg-[#FAFAF8] border-t border-[#E8E4DC]"
+          >
+            <div className="px-6 pt-8 pb-10 flex flex-col gap-0">
+              {[...links, { label: "Contacto", href: "#contact" }].map((l, i) => (
                 <a
+                  key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="font-[family-name:var(--font-dm-sans)] text-[11px] tracking-[0.2em] uppercase text-[#6b6b6b] hover:text-[#1a1a1a] transition-colors"
+                  className="font-[family-name:var(--font-playfair)] text-2xl font-medium text-[#1a1a1a] py-4 border-b border-[#E8E4DC] last:border-b-0 hover:text-[#C9A96E] transition-colors duration-200"
+                  style={{ transitionDelay: `${i * 40}ms` }}
                 >
                   {l.label}
                 </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+              ))}
+
+              {/* Social links */}
+              <div className="flex gap-6 mt-8 pt-6 border-t border-[#E8E4DC]">
+                <a
+                  href="https://www.instagram.com/flopezagostinelli"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b] hover:text-[#C9A96E] transition-colors"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://www.tiktok.com/@flopezagostinelli"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b] hover:text-[#C9A96E] transition-colors"
+                >
+                  TikTok
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/flavia-lopez-agostinelli/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.2em] uppercase text-[#6b6b6b] hover:text-[#C9A96E] transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
