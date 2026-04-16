@@ -52,6 +52,16 @@ body::after {
   background-size: 180px 180px;
 }
 
+/* Hero: respeta safe-area en mobile, full-bleed en desktop */
+.hero-safe-top {
+  padding-top: calc(env(safe-area-inset-top) + 4rem);
+}
+@media (min-width: 768px) {
+  .hero-safe-top {
+    padding-top: 0;
+  }
+}
+
 /* Marquee animation */
 @keyframes marquee {
   from { transform: translateX(0); }
