@@ -34,6 +34,7 @@ h1, h2, h3, h4 {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px;
 }
 
 /* Grain texture overlay */

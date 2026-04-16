@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col">
+    <section className="relative overflow-hidden min-h-screen flex flex-col pt-16 md:pt-0">
 
       {/* ── Mobile: foto arriba ── */}
       <div className="md:hidden relative w-full h-[55vh] flex-shrink-0">
@@ -72,36 +72,40 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.75 }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3"
+          className="flex flex-wrap items-center gap-3"
         >
           <a
             href="#portfolio"
-            className="px-8 py-3.5 bg-[#1a1a1a] text-[#FAFAF8] font-[family-name:var(--font-dm-sans)] text-sm tracking-wide hover:bg-[#333] transition-colors duration-300 text-center"
+            className="px-8 py-3.5 bg-[#1a1a1a] text-[#FAFAF8] font-[family-name:var(--font-dm-sans)] text-sm tracking-wide hover:bg-[#333] transition-colors duration-300"
           >
             Ver mi trabajo
           </a>
-          <a
-            href="https://www.instagram.com/flopezagostinelli"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-[#1a1a1a] text-[#1a1a1a] font-[family-name:var(--font-dm-sans)] text-sm tracking-wide hover:bg-[#1a1a1a] hover:text-[#FAFAF8] transition-colors duration-300"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-            Instagram
-          </a>
-          <a
-            href="https://www.tiktok.com/@flopezagostinelli"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-[#1a1a1a] text-[#1a1a1a] font-[family-name:var(--font-dm-sans)] text-sm tracking-wide hover:bg-[#1a1a1a] hover:text-[#FAFAF8] transition-colors duration-300"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-            </svg>
-            TikTok
-          </a>
+
+          {/* Social icons — compactos en móvil */}
+          <div className="flex items-center gap-2">
+            <a
+              href="https://www.instagram.com/flopezagostinelli"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="inline-flex items-center justify-center w-11 h-11 border border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-[#FAFAF8] transition-colors duration-300"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a
+              href="https://www.tiktok.com/@flopezagostinelli"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="inline-flex items-center justify-center w-11 h-11 border border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-[#FAFAF8] transition-colors duration-300"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+              </svg>
+            </a>
+          </div>
         </motion.div>
       </div>
 
