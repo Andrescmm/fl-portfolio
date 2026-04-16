@@ -28,7 +28,6 @@ export default function Navbar() {
           ? "bg-[#FAFAF8]/98 backdrop-blur-md shadow-[0_1px_0_0_#E8E4DC]"
           : "bg-[#FAFAF8]/90 backdrop-blur-sm"
       }`}
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 

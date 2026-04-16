@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-screen flex flex-col hero-safe-top">
+    <section className="relative overflow-hidden min-h-screen flex flex-col pt-16 md:pt-0">
 
       {/* ── Mobile: foto arriba ── */}
       <div className="md:hidden relative w-full h-[55vh] flex-shrink-0">
