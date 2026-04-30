@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   title: "Flavia Lopez — Administradora de Negocios & Creadora de Contenido",
   description:
     "Portafolio de Flavia Lopez, creadora de contenido y administradora de negocios basada en Arequipa, Perú.",
+  themeColor: "#FAFAF8",
 };
 
 export default function RootLayout({
