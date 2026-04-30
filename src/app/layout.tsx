@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -16,11 +16,14 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#FAFAF8",
+};
+
 export const metadata: Metadata = {
   title: "Flavia Lopez — Administradora de Negocios & Creadora de Contenido",
   description:
     "Portafolio de Flavia Lopez, creadora de contenido y administradora de negocios basada en Arequipa, Perú.",
-  themeColor: "#FAFAF8",
 };
 
 export default function RootLayout({
