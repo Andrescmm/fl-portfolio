@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${playfair.variable} ${dmSans.variable} bg-[#FAFAF8] text-[#1a1a1a] antialiased`}
       >
         <Navbar />
-        <main className="pt-[var(--navbar-offset)] md:pt-0">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

@@ -7,7 +7,6 @@
   --muted: #6b6b6b;
   --border: #E8E4DC;
   --navbar-height: 5rem;
-  --navbar-offset: calc(env(safe-area-inset-top, 0px) + var(--navbar-height));
 }
 
 @theme inline {
@@ -36,7 +35,21 @@ h1, h2, h3, h4 {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--navbar-offset);
+  /* Use env() directly — Safari does not reliably resolve env() inside CSS custom properties */
+  scroll-padding-top: 5rem;
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 5rem);
+}
+
+/* Offset main content below the fixed navbar — env() used directly for Safari compatibility */
+main {
+  padding-top: 5rem;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 5rem);
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 0;
+  }
 }
 
 /* Grain texture overlay */
