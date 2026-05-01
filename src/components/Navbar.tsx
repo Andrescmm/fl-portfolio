@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -14,7 +14,6 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -22,31 +21,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Measure the real rendered navbar height (including safe-area padding) and
-  // apply it directly as an inline style on <main> — inline styles can't be
-  // overridden by any CSS rule, so this is guaranteed to work on every device.
-  useEffect(() => {
-    const el = headerRef.current;
-    const mainEl = document.querySelector("main");
-    if (!el || !(mainEl instanceof HTMLElement)) return;
-
-    const update = () => {
-      mainEl.style.paddingTop = el.offsetHeight + "px";
-    };
-
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <header
-      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#FAFAF8] border-b border-[#E8E4DC] ${
         scrolled ? "shadow-sm" : ""
       }`}
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <nav className="max-w-6xl mx-auto px-6 h-20 md:h-16 flex items-center justify-between">
 
