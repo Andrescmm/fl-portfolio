@@ -6,7 +6,7 @@
   --accent: #C9A96E;
   --muted: #6b6b6b;
   --border: #E8E4DC;
-  --navbar-height: 4rem;
+  --navbar-height: 5rem;
   --navbar-offset: calc(env(safe-area-inset-top, 0px) + var(--navbar-height));
 }
 
