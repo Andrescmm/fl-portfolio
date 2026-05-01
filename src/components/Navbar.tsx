@@ -26,6 +26,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#FAFAF8] border-b border-[#E8E4DC] ${
         scrolled ? "shadow-sm" : ""
       }`}
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
