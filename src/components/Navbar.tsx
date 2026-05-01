@@ -22,17 +22,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Measure the real rendered navbar height (including safe-area padding)
-  // and expose it as a CSS variable so main can offset correctly on all devices.
+  // Measure the real rendered navbar height (including safe-area padding) and
+  // apply it directly as an inline style on <main> — inline styles can't be
+  // overridden by any CSS rule, so this is guaranteed to work on every device.
   useEffect(() => {
     const el = headerRef.current;
-    if (!el) return;
-    const observer = new ResizeObserver(() => {
-      document.documentElement.style.setProperty(
-        "--navbar-actual-height",
-        el.offsetHeight + "px"
-      );
-    });
+    const mainEl = document.querySelector("main");
+    if (!el || !(mainEl instanceof HTMLElement)) return;
+
+    const update = () => {
+      mainEl.style.paddingTop = el.offsetHeight + "px";
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
     observer.observe(el);
     return () => observer.disconnect();
   }, []);

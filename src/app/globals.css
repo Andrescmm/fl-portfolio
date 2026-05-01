@@ -40,12 +40,8 @@ html {
   scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 5rem);
 }
 
-/* --navbar-actual-height is set via JS (ResizeObserver in Navbar.tsx) so it always
-   reflects the real rendered height including safe-area padding on every Apple device.
-   5rem is the SSR fallback until JS runs. */
-main {
-  padding-top: var(--navbar-actual-height, 5rem);
-}
+/* padding-top on <main> is set directly via inline style in Navbar.tsx (ResizeObserver)
+   so it always matches the exact rendered navbar height on every device. */
 
 /* Grain texture overlay */
 body::after {
