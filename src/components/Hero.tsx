@@ -6,25 +6,9 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section
-      className="relative overflow-hidden md:min-h-screen flex flex-col md:pt-0 bg-[#FAFAF8] hero-mobile-top"
-    >
+    <section className="relative bg-[#FAFAF8] md:overflow-hidden md:min-h-screen md:flex md:flex-col">
 
-      {/* ── Mobile: foto arriba ── */}
-      <div className="md:hidden relative w-full h-[55vh] flex-shrink-0">
-        <Image
-          src="/images/hero.jpg"
-          alt="Flavia Lopez"
-          fill
-          className="object-cover object-top"
-          priority
-          quality={90}
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FAFAF8]" />
-      </div>
-
-      {/* ── Desktop: foto full bleed ── */}
+      {/* ── Desktop: foto full bleed (oculta en móvil) ── */}
       <div className="hidden md:block absolute inset-0">
         <Image
           src="/images/hero.jpg"
@@ -35,26 +19,38 @@ export default function Hero() {
           quality={90}
           sizes="100vw"
         />
-        {/* Overlay gradiente — izquierda legible, derecha foto limpia */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#FAFAF8]/95 via-[#FAFAF8]/70 to-transparent" />
       </div>
 
-      {/* ── Contenido de texto ── */}
-      <div className="relative z-10 flex flex-col justify-center flex-1 px-6 md:px-16 lg:px-28 pt-4 pb-16 md:py-0 max-w-2xl">
+      {/* ── Contenido ── */}
+      <div className="relative z-10 flex flex-col justify-center md:flex-1 px-6 md:px-16 lg:px-28 pt-28 pb-16 md:py-0 max-w-2xl">
+
+        {/* Línea decorativa dorada — solo móvil */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="md:hidden w-12 h-px bg-[#C9A96E] origin-left mb-8"
+        />
+
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="font-[family-name:var(--font-dm-sans)] text-[9px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#C9A96E] mb-5 md:mb-6 leading-relaxed"
+          className="font-[family-name:var(--font-dm-sans)] text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.3em] uppercase text-[#C9A96E] mb-6 md:mb-6 leading-relaxed"
         >
-          Administradora de Negocios & Creadora de Contenido
+          Administradora de Negocios
+          <br className="md:hidden" />
+          <span className="hidden md:inline"> & </span>
+          <span className="md:hidden">& </span>
+          Creadora de Contenido
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-[#1a1a1a] leading-[1.05] tracking-tight mb-6 md:mb-8"
+          className="font-[family-name:var(--font-playfair)] text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-medium text-[#1a1a1a] leading-[1.02] tracking-tight mb-8 md:mb-8"
         >
           Flavia
           <br />
@@ -65,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="font-[family-name:var(--font-dm-sans)] font-light text-sm md:text-base lg:text-lg text-[#6b6b6b] max-w-sm leading-relaxed mb-8 md:mb-12"
+          className="font-[family-name:var(--font-dm-sans)] font-light text-base md:text-base lg:text-lg text-[#6b6b6b] max-w-sm leading-relaxed mb-10 md:mb-12"
         >
           Creativa trilingüe con visión de negocios — diseñando estrategias de contenido y alianzas de marca que generan resultados reales.
         </motion.p>
@@ -83,7 +79,6 @@ export default function Hero() {
             Ver mi trabajo
           </a>
 
-          {/* Social icons — compactos en móvil */}
           <div className="flex items-center gap-2">
             <a
               href="https://www.instagram.com/flopezagostinelli"
@@ -109,9 +104,36 @@ export default function Hero() {
             </a>
           </div>
         </motion.div>
+
+        {/* Mini foto circular como acento — solo móvil */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="md:hidden mt-16 flex items-center gap-4"
+        >
+          <div className="relative w-14 h-14 rounded-full overflow-hidden bg-[#EDE8DF] flex-shrink-0">
+            <Image
+              src="/images/hero.jpg"
+              alt="Flavia Lopez"
+              fill
+              className="object-cover object-top"
+              quality={85}
+              sizes="56px"
+            />
+          </div>
+          <div>
+            <p className="font-[family-name:var(--font-dm-sans)] text-[10px] tracking-[0.2em] uppercase text-[#6b6b6b]">
+              Basada en
+            </p>
+            <p className="font-[family-name:var(--font-playfair)] text-base text-[#1a1a1a]">
+              Arequipa, Perú
+            </p>
+          </div>
+        </motion.div>
       </div>
 
-      {/* ── Scroll indicator (solo desktop) ── */}
+      {/* Scroll indicator solo desktop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
